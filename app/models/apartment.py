@@ -11,4 +11,4 @@ class Apartment(Base):
     bedrooms = Column(Integer, nullable=False)
     max_guests = Column(Integer, nullable=False)
     nightly_rate = Column(Numeric(10,2), nullable=False)
-    status = Column(String(50), nullable=False)
+    status = Column(String(50), nullable=False, default="available") 

@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ApartmentCreate(BaseModel):
@@ -20,3 +20,9 @@ class ApartmentUpdate(BaseModel):
     max_guests: int | None = Field(default=None, gt=0)
     nightly_rate: Decimal | None = Field(default=None, gt=0)
     status: Literal["available", "maintenance", "inactive"] | None = None
+
+
+class ApartmentResponse(ApartmentCreate):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
